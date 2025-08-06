@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { env } from "@/config/env";
+
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -19,16 +19,27 @@ type ExampleItem = {
 
 // Server Action to fetch data
 async function getExampleData(): Promise<ExampleItem[]> {
-  const res = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/example`, {
-    // Ensure fresh data on each request
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
+  // Mock data for demonstration
+  return [
+    {
+      id: 1,
+      title: "Example Item 1",
+      description: "This is an example item demonstrating data fetching.",
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: 2,
+      title: "Example Item 2", 
+      description: "Another example item showing how data can be displayed.",
+      createdAt: new Date().toISOString()
+    },
+    {
+      id: 3,
+      title: "Example Item 3",
+      description: "A third example item to demonstrate the layout.",
+      createdAt: new Date().toISOString()
+    }
+  ];
 }
 
 // Loading component

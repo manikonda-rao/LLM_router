@@ -1,0 +1,55 @@
+{
+  "name": "llm-router",
+  "version": "1.0.0",
+  "description": "Intelligent LLM routing system for optimal model selection based on cost, latency, and quality",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "llm",
+    "router",
+    "ai",
+    "model-selection",
+    "cost-optimization",
+    "openai",
+    "anthropic",
+    "google",
+    "gpt",
+    "claude",
+    "gemini"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/llm-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/llm-router/issues"
+  },
+  "homepage": "https://github.com/yourusername/llm-router#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.5.0",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {},
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ]
+} 
