@@ -17,7 +17,7 @@ export interface Metric {
 
 class PrometheusMetrics {
   private metrics: Map<string, Metric> = new Map();
-  private registry: Map<string, any> = new Map();
+  private registry: Map<string, unknown> = new Map();
 
   constructor() {
     this.initializeDefaultMetrics();

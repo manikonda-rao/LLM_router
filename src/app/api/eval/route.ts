@@ -153,7 +153,8 @@ async function performEvaluation(data: {
   };
 }
 
-async function getEvaluationHistory({ modelId: _modelId, limit: _limit }: { modelId?: string; limit: number }) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function getEvaluationHistory(_params: { modelId?: string; limit: number }) {
   // Placeholder implementation
   return [];
 } 

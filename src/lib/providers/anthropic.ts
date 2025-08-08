@@ -1,4 +1,4 @@
-import { BaseProvider, ProviderConfig, ProviderRequest, ProviderResponse, ProviderError } from './base';
+import { BaseProvider, ProviderConfig, ProviderRequest, ProviderResponse } from './base';
 
 export class AnthropicProvider extends BaseProvider {
   private baseUrl: string;
@@ -78,7 +78,7 @@ export class AnthropicProvider extends BaseProvider {
       }
 
       const data = await response.json();
-      return data.data.map((model: any) => model.id);
+      return data.data.map((model: { id: string }) => model.id);
     });
   }
 
@@ -86,7 +86,7 @@ export class AnthropicProvider extends BaseProvider {
     try {
       await this.listModels();
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   }

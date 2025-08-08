@@ -23,7 +23,7 @@ export interface CacheConfig {
 }
 
 class RedisManager {
-  private client: any;
+  private client: unknown;
   private config: RedisConfig;
   private isConnected: boolean = false;
 
@@ -156,7 +156,6 @@ export class RateLimiter {
       : `rate_limit:${identifier}`;
 
     const now = Date.now();
-    const windowStart = now - this.config.windowMs;
 
     try {
       // Get current count

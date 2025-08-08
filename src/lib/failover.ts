@@ -189,12 +189,14 @@ class FailoverManager {
     }
   }
 
-  private getModelConfig(modelId: string): ModelConfig | undefined {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private getModelConfig(_modelId: string): ModelConfig | undefined {
     // TODO: Import from registry
     return undefined;
   }
 
-  private getFailoverModels(modelId: string): ModelConfig[] {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private getFailoverModels(_modelId: string): ModelConfig[] {
     // TODO: Import from registry
     return [];
   }

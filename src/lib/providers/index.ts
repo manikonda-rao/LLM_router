@@ -53,7 +53,7 @@ export class ProviderFactory {
     try {
       const provider = this.createProvider(type, config);
       return await provider.isAvailable();
-    } catch (error) {
+    } catch {
       return false;
     }
   }

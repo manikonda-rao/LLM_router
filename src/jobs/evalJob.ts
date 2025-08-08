@@ -119,7 +119,17 @@ class EvalJob {
     };
   }
 
-  private async getRecentEvaluations(modelId: string): Promise<any[]> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private async getRecentEvaluations(_modelId: string): Promise<Array<{
+    score: number;
+    metrics: {
+      accuracy: number;
+      relevance: number;
+      completeness: number;
+      clarity: number;
+    };
+    createdAt: Date;
+  }>> {
     // TODO: Implement database query to get recent evaluations
     // For now, return mock data
     return [
@@ -146,7 +156,16 @@ class EvalJob {
     ];
   }
 
-  private calculateQualityMetrics(evaluations: any[]): ModelQualityScore['metrics'] {
+  private calculateQualityMetrics(evaluations: Array<{
+    score: number;
+    metrics: {
+      accuracy: number;
+      relevance: number;
+      completeness: number;
+      clarity: number;
+    };
+    createdAt: Date;
+  }>): ModelQualityScore['metrics'] {
     const metrics = {
       accuracy: 0,
       relevance: 0,

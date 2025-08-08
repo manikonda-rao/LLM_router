@@ -137,7 +137,8 @@ async function storeFeedback(data: {
   };
 }
 
-async function getFeedbackHistory({ modelId: _modelId, category: _category, limit: _limit }: { modelId?: string; category?: string; limit: number }) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function getFeedbackHistory(_params: { modelId?: string; category?: string; limit: number }) {
   // Placeholder implementation
   return [];
 } 
