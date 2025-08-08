@@ -128,7 +128,7 @@ export default function ResultsPage() {
         </Card>
 
         {/* Detailed Results */}
-        <div className="bg-white rounded-lg p-6">
+        <div className="bg-white/[0.05] border border-white/[0.1] rounded-lg p-6">
           <ResultCard result={result.result} prompt={result.prompt} />
         </div>
 

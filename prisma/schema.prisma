@@ -1,0 +1,178 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  requests    Request[]
+  feedback    Feedback[]
+  evaluations Evaluation[]
+
+  @@map("users")
+}
+
+model Model {
+  id          String   @id @default(cuid())
+  name        String
+  provider    String
+  isActive    Boolean  @default(true)
+  priority    Int      @default(5)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  requests    Request[]
+  feedback    Feedback[]
+  evaluations Evaluation[]
+  metrics     ModelMetric[]
+
+  @@map("models")
+}
+
+model Request {
+  id          String   @id @default(cuid())
+  prompt      String
+  response    String?
+  modelId     String
+  userId      String?
+  sessionId   String?
+  status      RequestStatus @default(PENDING)
+  latency     Int? // in milliseconds
+  cost        Float?
+  tokenUsage  Json? // { input: number, output: number, total: number }
+  metadata    Json? // Additional request metadata
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  model       Model    @relation(fields: [modelId], references: [id])
+  user        User?    @relation(fields: [userId], references: [id])
+  feedback    Feedback[]
+  evaluations Evaluation[]
+
+  @@map("requests")
+}
+
+model Feedback {
+  id        String   @id @default(cuid())
+  requestId String
+  modelId   String
+  userId    String?
+  rating    Int      @db.SmallInt // 1-5 scale
+  category  FeedbackCategory
+  comment   String?
+  tags      String[] // Array of tags
+  createdAt DateTime @default(now())
+
+  // Relations
+  request   Request  @relation(fields: [requestId], references: [id])
+  model     Model    @relation(fields: [modelId], references: [id])
+  user      User?    @relation(fields: [userId], references: [id])
+
+  @@map("feedback")
+}
+
+model Evaluation {
+  id               String   @id @default(cuid())
+  requestId        String?
+  modelId          String
+  userId           String?
+  score            Float    // 0-1 scale
+  metrics          Json     // { accuracy: number, relevance: number, completeness: number, clarity: number }
+  expectedResponse String?
+  createdAt        DateTime @default(now())
+
+  // Relations
+  request          Request? @relation(fields: [requestId], references: [id])
+  model            Model    @relation(fields: [modelId], references: [id])
+  user             User?    @relation(fields: [userId], references: [id])
+
+  @@map("evaluations")
+}
+
+model ModelMetric {
+  id            String   @id @default(cuid())
+  modelId       String
+  date          DateTime @db.Date
+  requestCount  Int      @default(0)
+  successCount  Int      @default(0)
+  failureCount  Int      @default(0)
+  averageLatency Float   @default(0)
+  totalCost     Float    @default(0)
+  totalTokens   Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  model         Model    @relation(fields: [modelId], references: [id])
+
+  @@unique([modelId, date])
+  @@map("model_metrics")
+}
+
+model AuditLog {
+  id          String      @id @default(cuid())
+  action      String      // CREATE, UPDATE, DELETE, etc.
+  resource    String      // Model, Request, Feedback, etc.
+  resourceId  String?
+  userId      String?
+  changes     Json?       // Before and after values
+  metadata    Json?       // Additional context
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime    @default(now())
+
+  @@map("audit_logs")
+}
+
+model RateLimit {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  count     Int      @default(0)
+  resetTime DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("rate_limits")
+}
+
+model CacheEntry {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   // JSON string
+  ttl       Int      // Time to live in seconds
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("cache_entries")
+}
+
+enum RequestStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum FeedbackCategory {
+  ACCURACY
+  RELEVANCE
+  COMPLETENESS
+  CLARITY
+  HELPFULNESS
+} 
