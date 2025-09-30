@@ -80,11 +80,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Main Content - Form */}
-        <div className="flex justify-center mb-12">
-          <PromptForm onSubmit={handleSubmit} isLoading={isLoading} />
-        </div>
-
         {/* Models Display - Now in tabs */}
         <div className="mb-12">
           <Tabs defaultValue="overview" className="w-full">
@@ -184,6 +179,11 @@ export default function Home() {
               View Recent Results →
             </button>
           </div>
+        </div>
+
+        {/* Main Content - Form (moved to bottom) */}
+        <div className="flex justify-center mt-12">
+          <PromptForm onSubmit={handleSubmit} isLoading={isLoading} />
         </div>
       </div>
     </div>
