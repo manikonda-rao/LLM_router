@@ -13,10 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LLM Router",
+  title: "LLM Router - Intelligent Model Selection",
   description: "Intelligent LLM routing system that classifies prompts and routes them to the most optimal language model based on cost, latency, and quality metrics",
-  keywords: ["LLM", "router", "AI", "language models", "prompt classification"],
+  keywords: ["LLM", "router", "AI", "language models", "prompt classification", "model selection"],
   authors: [{ name: "Headstarter" }],
+  openGraph: {
+    title: "LLM Router - Intelligent Model Selection",
+    description: "Route your prompts to the optimal LLM based on cost, latency, and quality",
+    type: "website",
+    url: "https://llm-router.vercel.app",
+    siteName: "LLM Router",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LLM Router",
+    description: "Intelligent LLM routing system for optimal model selection",
+  },
 };
 
 export default function RootLayout({
