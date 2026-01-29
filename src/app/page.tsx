@@ -229,6 +229,12 @@ export default function Home() {
         <div className="mt-12 text-center">
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
+              onClick={() => (document.querySelector('input[type="text"]') as HTMLInputElement)?.focus()}
+              className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 px-6 py-3 text-sm font-semibold text-white hover:from-blue-600 hover:to-cyan-600 transition-colors shadow-lg"
+            >
+              Get Started →
+            </button>
+            <button
               onClick={() => router.push('/test')}
               className="inline-flex items-center justify-center rounded-lg bg-white/[0.1] px-4 py-2 text-sm font-medium text-white hover:bg-white/[0.15] transition-colors"
             >
