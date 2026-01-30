@@ -24,11 +24,6 @@ export const metadata: Metadata = {
     url: "https://llm-router.vercel.app",
     siteName: "LLM Router",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "LLM Router",
-    description: "Intelligent LLM routing system for optimal model selection",
-  },
 };
 
 export default function RootLayout({

@@ -1,39 +1,31 @@
-### Code of Conduct
+# Code of Conduct
 
-We are committed to fostering a welcoming and inclusive community. We expect all contributors and maintainers to adhere to this code of conduct in all project spaces.
+We are committed to fostering a welcoming and inclusive community.
 
-## Our Standards
+## Standards
 
-- Be respectful and considerate.
-- Assume good intent; seek to understand before responding.
-- Provide constructive feedback.
-- Accept responsibility and apologize when mistakes are made.
-- Focus on what is best for the community.
+- Be respectful and considerate
+- Assume good intent
+- Provide constructive feedback
+- Accept responsibility
+- Focus on community benefit
 
-Unacceptable behavior includes:
+## Unacceptable Behavior
 
-- Harassment, discrimination, or intimidation in any form
-- Public or private harassment, stalking, or threats
-- Sexualized language or imagery; unwelcome sexual attention
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Publishing others’ private information without explicit permission
-
-## Responsibilities
-
-Maintainers are responsible for clarifying standards and taking appropriate corrective action in response to unacceptable behavior, including temporary or permanent bans.
+- Harassment, discrimination, or intimidation
+- Threats, stalking, or unwelcome attention
+- Sexualized language or imagery
+- Trolling, insulting comments, or attacks
+- Publishing private information without consent
 
 ## Scope
 
-This Code of Conduct applies within all project spaces, including issues, pull requests, discussions, code reviews, and any project-related communication channels.
+This Code of Conduct applies to all project spaces.
 
 ## Enforcement
 
-Report violations by opening a confidential issue or contacting the maintainers.
-
-Reports will be reviewed and investigated promptly and fairly. All maintainers are obligated to respect the privacy and security of the reporter.
+Report violations to the maintainers. All reports will be reviewed promptly and fairly.
 
 ## Attribution
 
-This Code of Conduct is adapted from the Contributor Covenant.
-
-
+Adapted from the Contributor Covenant.
